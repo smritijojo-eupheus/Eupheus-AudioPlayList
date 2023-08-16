@@ -15,22 +15,22 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="flex justify-between h-screen">
+    <div className="flex justify-between h-screen w-full">
       <div className="">
         <img
           src={Cover}
-          className="h-0 w-0 sm:h-[712px] sm:w-[1500px] md:h-[712px] md:w-[2500px] lg:h-[712px] lg:w-[4800px]"
+          className="h-0 w-0 md:h-[100%] sm:w-[1500px]  md:w-[2500px]  lg:w-[4800px]"
         ></img>
       </div>
 
       <form
-        className="flex  flex-col  h-screen p-5 w-[100%] sm:w-[150%] rounded-lg  "
+        className="flex  flex-col   p-1 sm:p-3  w-full  md:w-[150%] rounded-lg  "
         style={{ "box-shadow": "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px" }}
       >
         <div className="flex justify-center mb-[3vh]">
           <img
             src={eupheus}
-            className="!w-[150px] sm:!w-[280px]"
+            className="!w-[150px] sm:!w-[250px]"
             alt="img"
           ></img>
         </div>

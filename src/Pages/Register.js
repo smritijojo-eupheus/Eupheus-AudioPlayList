@@ -12,6 +12,7 @@ import localinstance from "../localinstance";
 // import useIsSmall from "../Components/Hook/util/Hooks/Hooks/util";
 import { useIsSmall } from "../Components/Hooks/util/small";
 import { useIsMedium } from "../Components/Hooks/util/medium";
+import { useIsExtraSmall } from "../Components/Hooks/util/ExtraSmall ";
 // import { useIsMedium } from "../Components/Hook/util/mediaQuery/medium";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +25,7 @@ const useStyle = makeStyles({
         margin: 0,
       },
     },
-    width: "410px",
+    width: "370px",
     // backgroundColor: "#F3F1F5",
   },
   DropDownClass: {
@@ -54,6 +55,7 @@ const Register = () => {
   const classes = useStyle();
   const small = useIsSmall();
   const medium = useIsMedium();
+  const extraSmall = useIsExtraSmall();
   const navigate = useNavigate();
   useLayoutEffect(() => {
     GetState();
@@ -227,15 +229,17 @@ const Register = () => {
       Swal.fire({
         text: "School Registered Successfully",
         icon: "success",
+        timer: 100000,
+      }).then(() => {
+        window.location.reload();
       });
-      setTimeout(window.location.reload(), 10000);
     }
   };
 
   return (
     <div>
       <form
-        className="flex  flex-col    px-5  rounded-lg w-[150%] sm:w-[110%]"
+        className="flex  flex-col px-5  rounded-lg w-[100%]"
         style={{ "box-shadow": "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px" }}
         // onKeyDown={handleSubmit}
         // onSubmit={(event) => handleEnter(event)}
@@ -289,13 +293,14 @@ const Register = () => {
               </h1>
 
               <Dropdown
-                width={small ? "200px" : "260px"}
+                width={extraSmall ? "190%" : small ? "180px" : "190%"}
                 handleOrderProcessingForm={handleOrderProcessingForm}
                 Name={"select_state"}
                 data={stateData}
                 value={state}
                 error={stateErr}
                 // helperText={stateErr ? "required" : ""}
+                className=""
               />
             </div>
 
@@ -307,7 +312,7 @@ const Register = () => {
 
               <Dropdown
                 // width="200px"
-                width={small ? "200px" : "260px"}
+                width={extraSmall ? "190%" : small ? "180px" : "190%"}
                 handleOrderProcessingForm={handleOrderProcessingForm}
                 Name={"select_city"}
                 data={cityData}
@@ -343,7 +348,13 @@ const Register = () => {
               size="small"
               //   value={Useremail}
               // className="border rounded-lg shadow-md w-[97%]"
-              className={small ? classes.textClass : "!w-[260px]"}
+              className={
+                extraSmall
+                  ? "w-[95%]"
+                  : small
+                  ? classes.textClass
+                  : "!w-[350px]"
+              }
               onChange={(e) => EnterZipCode(e)}
               error={zipErr || zipCodeError()}
               // onKeyUp={(event) => handleEnter(event)}
